@@ -14,48 +14,8 @@ class pideDetay extends StatelessWidget {
           children: <Widget>[
             Stack(
               children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                        padding: EdgeInsets.only(top: 70, left: 50),
-                        child: Container(
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                            child: Icon(Icons.arrow_back, size: 30),
-                          ),
-                        ),
-                      ),
-                    ),
-                    PideResim(pideObject.resim),
-                    SizedBox(height: 30),
-                    Padding(
-                      padding: EdgeInsets.only(left: 105, right: 30),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          TitleText(pideObject.isim),
-                          SizedBox(height: 20),
-                          StarRating(pideObject.starRating),
-                          SizedBox(height: 20),
-                          Description(pideObject.detay),
-                          SizedBox(height: 20),
-                          Fiyat(pideObject.fiyat),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          BottomButtons(),
-                          SizedBox(
-                            height: 35,
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+                BackgroundArc(pideObject.background),
+                ForegroundContent(pideObject: pideObject)
               ],
             )
           ],
@@ -273,5 +233,53 @@ class PideResim extends StatelessWidget {
       width: 300,
       child: Image.asset(imageURI),
     );
+  }
+}
+class BackgroundArc extends StatelessWidget {
+  const BackgroundArc(this.background);
+
+  final Color background;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: CustomPaint(
+        painter: BackgroundPainter(background),
+      ),
+    );
+  }
+}
+
+class BackgroundPainter extends CustomPainter {
+  BackgroundPainter(this.color);
+
+  final Color color;
+
+  Path path = Path();
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    // TODO: implement paint
+    Paint painter = Paint()..color = color;
+    path.moveTo(250, 0);
+
+    /*
+      these are very absolute coordinates, thus they are not efficient when you open the app in landscape mode.
+      Try finding how you can make them relative to the screen.
+      Hint: You would have to use the size parameter which is being passed.
+    */
+
+    path.quadraticBezierTo(150, 125, 240, 270);
+    path.quadraticBezierTo(300, 345, 450, 350);
+
+    path.lineTo(500, 0);
+
+    canvas.drawPath(path, painter);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    // TODO: implement shouldRepaint
+    return true;
   }
 }

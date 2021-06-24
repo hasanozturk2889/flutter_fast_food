@@ -43,7 +43,7 @@ class ListOfPizzas extends StatelessWidget {
     return Row(
       children: <Widget>[
         GestureDetector(
-          onTap: () {
+          onDoubleTap: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => pizzaDetay(pizzaObject)));
           },

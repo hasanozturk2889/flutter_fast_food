@@ -3,13 +3,14 @@ import 'package:flutter_fast_food/Menu/burgerMain.dart';
 import 'package:flutter_fast_food/Menu/pideMain.dart';
 import 'package:flutter_fast_food/Menu/pizzaMain.dart';
 import 'package:flutter_fast_food/Menu/sandvicMain.dart';
+import 'package:flutter_fast_food/Menu/yanUrunMain.dart';
 
 Widget Menu() {
   return Container(
     height: 580,
     width: double.infinity,
     child: DefaultTabController(
-      length: 4,
+      length: 5,
       child: Scaffold(
         appBar: AppBar(
           elevation: 0,
@@ -40,16 +41,20 @@ Widget Menu() {
                           child: Text("Pide"),
                         ),
                         Container(
-                          padding: EdgeInsets.only(left: 60),
+                          padding: EdgeInsets.only(left: 50),
                           child: Text("Pizza"),
                         ),
                         Container(
-                          padding: EdgeInsets.only(left: 60),
+                          padding: EdgeInsets.only(left: 50),
                           child: Text("Burger"),
                         ),
                         Container(
-                          padding: EdgeInsets.only(left: 60),
+                          padding: EdgeInsets.only(left: 50),
                           child: Text("Sandviç"),
+                        ),
+                        Container(
+                          padding: EdgeInsets.only(left: 50),
+                          child: Text("Yan Ürünler"),
                         ),
                       ],
                     )
@@ -61,10 +66,12 @@ Widget Menu() {
         ),
         body: TabBarView(
           children: <Widget>[
+
             pideMain(),
             pizzaMain(),
             burgerMain(),
             sandvicMain(),
+            yanUrunMain(),
           ],
         ),
       ),

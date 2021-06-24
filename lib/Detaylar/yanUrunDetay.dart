@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_fast_food/Listeler/burger.dart';
-
-class burgerDetay extends StatelessWidget {
-  burgerDetay(this.burgerObject);
+import 'package:flutter_fast_food/Listeler/yanUrun.dart';
 
 
+class yanurunDetay extends StatelessWidget {
+  yanurunDetay(this.yanurunObject);
 
-  final Burger burgerObject;
+
+
+  final YanUrun yanurunObject;
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +17,8 @@ class burgerDetay extends StatelessWidget {
           children: <Widget>[
             Stack(
               children: <Widget>[
-                BackgroundArc(burgerObject.background),
-                ForegroundContent(burgerObject: burgerObject)
+                BackgroundArc(yanurunObject.background),
+                ForegroundContent(yanurunObject: yanurunObject)
               ],
             )
           ],
@@ -28,9 +29,9 @@ class burgerDetay extends StatelessWidget {
 }
 
 class ForegroundContent extends StatelessWidget {
-  const ForegroundContent({@required this.burgerObject});
+  const ForegroundContent({@required this.yanurunObject});
 
-  final Burger burgerObject;
+  final YanUrun yanurunObject;
 
   @override
   Widget build(BuildContext context) {
@@ -50,20 +51,20 @@ class ForegroundContent extends StatelessWidget {
             ),
           ),
         ),
-        BurgerImage(burgerObject.resim),
+        YanUrunImage(yanurunObject.resim),
         SizedBox(height: 30),
         Padding(
           padding: EdgeInsets.only(left: 105, right: 30),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              TitleText(burgerObject.isim),
+              TitleText(yanurunObject.isim),
               SizedBox(height: 20),
-              StarRating(burgerObject.starRating),
+              StarRating(yanurunObject.starRating),
               SizedBox(height: 20),
-              Description(burgerObject.detay),
+              Description(yanurunObject.detay),
               SizedBox(height: 20),
-              Fiyat(burgerObject.fiyat),
+              Fiyat(yanurunObject.fiyat),
               SizedBox(
                 height: 20,
               ),
@@ -195,9 +196,9 @@ class StarRating extends StatelessWidget {
 }
 
 class TitleText extends StatelessWidget {
-  const TitleText(this.burgerName);
+  const TitleText(this.yanurunName);
 
-  final String burgerName;
+  final String yanurunName;
   final double _fontSize = 40;
 
   @override
@@ -205,28 +206,22 @@ class TitleText extends StatelessWidget {
     return RichText(
       text: TextSpan(children: [
         TextSpan(
-            text: burgerName,
+            text: yanurunName,
             style: TextStyle(
                 color: Colors.black,
                 fontSize: _fontSize,
                 fontFamily: "slabo",
                 fontWeight: FontWeight.w500)),
-        TextSpan(
-            text: " Burger",
-            style: TextStyle(
-                color: Colors.black,
-                fontSize: _fontSize,
-                fontFamily: "slabo",
-                fontWeight: FontWeight.w600))
+
       ]),
     );
   }
 }
 
-class BurgerImage extends StatelessWidget {
+class YanUrunImage extends StatelessWidget {
   final String imageURI;
 
-  const BurgerImage(this.imageURI);
+  const YanUrunImage(this.imageURI);
 
   @override
   Widget build(BuildContext context) {

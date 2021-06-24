@@ -1,42 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_fast_food/Detaylar/pideDetay.dart';
-import 'package:flutter_fast_food/Listeler/pide.dart';
+import 'package:flutter_fast_food/Detaylar/yanUrunDetay.dart';
+import 'package:flutter_fast_food/Listeler/yanUrun.dart';
 
-Widget pideMain() {
+
+Widget yanUrunMain() {
   return Container(
     padding: EdgeInsets.symmetric(vertical: 30),
     child: ListView.builder(
       scrollDirection: Axis.horizontal,
-      itemCount: pideList.pide.length,
+      itemCount: yanurunList.yanurun.length,
       itemBuilder: (BuildContext context, int i) {
-        return ListOfPide(
-          isim: pideList.pide[i].isim,
-          resim: pideList.pide[i].resim,
-          fiyat: pideList.pide[i].fiyat,
-          background: pideList.pide[i].background,
-          foreground: pideList.pide[i].foreground,
-          pideObject: pideList.pide[i],
+        return ListOfYanUruns(
+          isim: yanurunList.yanurun[i].isim,
+          resim: yanurunList.yanurun[i].resim,
+          fiyat: yanurunList.yanurun[i].fiyat,
+          background: yanurunList.yanurun[i].background,
+          foreground: yanurunList.yanurun[i].foreground,
+          yanurunObject: yanurunList.yanurun[i],
         );
       },
     ),
   );
 }
 
-class ListOfPide extends StatelessWidget {
-  const ListOfPide(
+class ListOfYanUruns extends StatelessWidget {
+  const ListOfYanUruns(
       {@required this.foreground,
         @required this.background,
         @required this.fiyat,
         @required this.isim,
         @required this.resim,
-        @required this.pideObject});
+        @required this.yanurunObject});
 
   final Color foreground;
   final Color background;
   final double fiyat;
   final String isim;
   final String resim;
-  final Pide pideObject;
+  final YanUrun yanurunObject;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +46,7 @@ class ListOfPide extends StatelessWidget {
         GestureDetector(
           onTap: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => pideDetay(pideObject)));
+                MaterialPageRoute(builder: (context) => yanurunDetay(yanurunObject)));
           },
           child: Container(
             padding: EdgeInsets.symmetric(vertical: 35, horizontal: 20),
@@ -58,11 +59,11 @@ class ListOfPide extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 SizedBox(
-                  height: 215,
+                  height: 180,
                   child: Image.asset(resim),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 30,
                 ),
 
                 RichText(
@@ -71,19 +72,16 @@ class ListOfPide extends StatelessWidget {
                       style: TextStyle(
                           color: foreground, fontSize: 25, fontFamily: "slabo"),
                       children: [
-                        TextSpan(text: isim),
-                        TextSpan(
-                            text: "\nPide",
-                            style: TextStyle(fontWeight: FontWeight.w800))
-                      ]),
+                        TextSpan(text: isim,style: TextStyle(fontWeight: FontWeight.w800))
+                        ]),
                 ),
                 SizedBox(
-                  height: 30,
+                  height: 40,
                 ),
                 Row(
                   children: <Widget>[
                     Expanded(
-                      child: Text("$fiyat  TL",
+                      child: Text("$fiyat TL",
                           style: TextStyle(
                               fontWeight: FontWeight.w700,
                               fontSize: 20,
@@ -129,7 +127,7 @@ class _FavIconState extends State<FavIcon> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onDoubleTap: () {
+      onTap: () {
         setState(() {
           isFav = !isFav;
         });

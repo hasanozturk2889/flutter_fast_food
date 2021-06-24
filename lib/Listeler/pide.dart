@@ -86,4 +86,6 @@ class Pide {
         @required this.starRating,
         @required this.detay,
         @required this.fiyat});
+
+
 }

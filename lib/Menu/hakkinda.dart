@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fast_food/Menu/altBar.dart';
 import 'package:flutter_fast_food/home.dart';
-
+import 'package:animated_text_kit/animated_text_kit.dart';
 class Hakkinda extends StatefulWidget {
   @override
   _HakkindaState createState() => _HakkindaState();
@@ -11,6 +11,7 @@ class _HakkindaState extends State<Hakkinda> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       appBar: AppBar(
         title: Text('Hakkında'),
         backgroundColor: Colors.orangeAccent,
@@ -29,15 +30,17 @@ class _HakkindaState extends State<Hakkinda> {
                 ),
                 SizedBox(height: 20,),
                 Center(
-                  child: Text(
-                    '\t\t\t\t Bu uygulama Dr. Öğretim Üyesi Ahmet Cevahir ÇINAR'
-                    ' tarafından yürütülen 3301456 kodlu MOBİL PROGRAMLAMA'
-                    ' dersi kapsamında 203301103 numaralı '
-                    'Hasan ÖZTÜRK tarafından 30 Nisan 2021 günü yapılmıştır.',
-                    style: TextStyle(fontSize: 20, fontFamily: 'slabo'),
-                    softWrap: true,
+                  child: FadeAnimatedTextKit(
+                    text:[
+                      '\t\t\t\t Bu uygulama Dr. Öğretim Üyesi Ahmet Cevahir ÇINAR'
+                      ' tarafından yürütülen 3301456 kodlu MOBİL PROGRAMLAMA'
+                      ' dersi kapsamında 203301103 numaralı '
+                      'Hasan ÖZTÜRK tarafından 25 Haziran 2021 günü yapılmıştır.'],
+                      textStyle: TextStyle(fontSize: 20, fontFamily: 'slabo'),
+
+                    ),
                   ),
-                ),
+
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20.0),
                   child: ElevatedButton(
