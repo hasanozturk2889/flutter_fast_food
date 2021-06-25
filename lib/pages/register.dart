@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_fast_food/pages/login.dart';
+import 'package:flutter_fast_food/login.dart';
 import 'package:flutter_fast_food/service/auth_service.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -167,7 +167,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 return Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => LoginPage()));
+                                        builder: (context) => MyLogin()));
                               });
                             },
                             child: Container(
